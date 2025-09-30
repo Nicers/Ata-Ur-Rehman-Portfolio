@@ -95,6 +95,8 @@
 
     <script>
         var btns = document.getElementById('buttons');
+        btnShowHide();
+        
         function addField() {
             var btn = document.getElementById('button_1');
             var clone = btn.cloneNode(true);

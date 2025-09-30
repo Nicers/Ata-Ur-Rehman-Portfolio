@@ -12,8 +12,21 @@
                         @method('POST')
                         <div class="container">
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                  div.d-flex
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-wrap">
+                                        <div class="form-group mr-4">
+                                            <label for="" class="form-label">Title</label>
+                                            <input type="text" required class="form-control" name="title"
+                                                value="{{ isset($about->title) ? $about->title : '' }}"
+                                                placeholder="Enter title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="form-label">Sub title</label>
+                                            <input type="text" required class="form-control" name="sub_title"
+                                                value="{{ isset($about->sub_title) ? $about->sub_title : '' }}"
+                                                placeholder="Enter sub title">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="" class="form-label">Description</label>
@@ -28,25 +41,27 @@
                                         onchange="document.getElementById('aboutImage').src=window.URL.createObjectURL(this.files[0])" />
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <img src="{{ isset($about->image) ? Storage::url($about->image) : null}}" alt="AboutUs Image"
-                                        id="aboutImage" class="w-50 h-100">
+                                    <img src="{{ isset($about->image) ? Storage::url($about->image) : null}}"
+                                        alt="AboutUs Image" id="aboutImage" class="w-50 h-100">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="" class="form-label">Button Label</label>
-                                    <input type="text" required class="form-control" name="button_txt" value="{{ isset($about) ? $about->button_txt : '' }}"
+                                    <input type="text" required class="form-control" name="button_txt"
+                                        value="{{ isset($about) ? $about->button_txt : '' }}"
                                         placeholder="Enter Button Label">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="" class="form-label">Button Url</label>
-                                    <input type="text" required class="form-control" name="button_url" value="{{ isset($about) ? $about->button_url : '' }}"
+                                    <input type="text" required class="form-control" name="button_url"
+                                        value="{{ isset($about) ? $about->button_url : '' }}"
                                         placeholder="Enter Button Url">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                        <button type="submit" class="btn btn-success mr-4">Save Changes</button>
+                                    <button type="submit" class="btn btn-success mr-4">Save Changes</button>
                                 </div>
                             </div>
                         </div>

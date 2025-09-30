@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('project_title_des', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image');
-            $table->string('sitePath');
-            $table->string('gitPath')->nullable();
-            $table->boolean('isGit')->default(false);
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->string('description');
+            $table->unsignedBigInteger('project_section_id');
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('project_categories');
+            $table->foreign('project_section_id')->references('id')->on('project_sections')->onDelete('cascade');
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('project_title_des');
     }
 };

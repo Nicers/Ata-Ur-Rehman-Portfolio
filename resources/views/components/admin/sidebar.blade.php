@@ -36,6 +36,28 @@
                     <i class="fa-solid fa-list-check"></i>
                     <span>About Section</span></a>
             </li>
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.project_section.index')}}">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Project Section</span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.resume_section.index')}}">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Resume Section</span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.contact_section.index')}}">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Contact Section</span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
+
 
         </ul>

@@ -33,6 +33,7 @@ class AboutController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'sub_title' => 'required',
             'desc' => 'required',
             'button_txt' => 'required',
             'button_url' => 'required'
@@ -65,6 +66,7 @@ class AboutController extends Controller
             }
         }
         $about->title = $request->title;
+        $about->sub_title = $request->sub_title;
         $about->description = $request->desc;
         $about->button_txt = $request->button_txt;
         $about->button_url = $request->button_url;

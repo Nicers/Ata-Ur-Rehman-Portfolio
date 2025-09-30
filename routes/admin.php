@@ -1,9 +1,12 @@
 <?php
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactSectionController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectSectionController;
+use App\Http\Controllers\ResumeSectionController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('login', [AdminController::class, 'create'])->name('login');
@@ -32,5 +35,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         //*** About Section Management ***/
         Route::get('about', [AboutController::class, 'index'])->name('about');
         Route::post('about-store', [AboutController::class, 'store'])->name('about-store');
+
+        //*** Project Section Management ***/
+        Route::controller(ProjectSectionController::class)->prefix('project_section')->as('project_section.')->group( function(){
+            Route::get('/', 'index')->name('index');
+            Route::post('store', 'store')->name('store');
+        });
+
+        //*** Contact Section Management ***/
+        Route::controller(ContactSectionController::class)->prefix('contact_section')->as('contact_section.')->group(function(){
+            Route::get('/', 'index')->name('index');
+            Route::post('store', 'store')->name('store');
+        });
+
+        //*** Resume Section Management ***/
+        Route::controller(ResumeSectionController::class)->prefix('resume_section')->as('resume_section.')->group(function(){
+            Route::get('/', 'index')->name('index');
+            Route::post('store', 'store')->name('store');
+        });
     });
 });

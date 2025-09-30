@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\ContactSection;
 use App\Models\Hero;
 use App\Models\Project;
+use App\Models\project_section;
 use App\Models\ProjectCategory;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,7 @@ class ProjectController extends Controller
     public function index($category_name)
     {
         $category = ProjectCategory::where('name', $category_name)->first();
+        
         $projects = Project::where('category_id', $category->id)->get();
         $projects->transform(function($project) {
             $project['src'] = 'storage/'. $project->image;
@@ -37,6 +40,10 @@ class ProjectController extends Controller
         $about = About::first();
         $about->image = 'storage/'. $about->image;
 
+        $project_section = project_section::with('title_descs')->first();
+
+        $contact_section = ContactSection::first();
+
         return response()->json([
             'sections' => [
                 [
@@ -47,6 +54,14 @@ class ProjectController extends Controller
                     'type' => 'about',
                     'data' => $about
                 ],
+                [
+                    'type' => 'project_section',
+                    'data' => $project_section
+                ], 
+                [
+                    'type' => 'contact_section',
+                    'data' => $contact_section
+                ]
             ]
         ], 200);
     }

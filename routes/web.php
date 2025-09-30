@@ -5,7 +5,6 @@ use Inertia\Inertia;
 
 require __DIR__.'/admin.php';
 
-
 Route::get('/', function () {
     return Inertia::render('Home');
 });
